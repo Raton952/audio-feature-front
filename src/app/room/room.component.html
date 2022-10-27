@@ -1,0 +1,22 @@
+
+<div class="video-grid">
+    <div *ngFor="let video of videos">
+      <span *ngIf="video.userId !== currentUserId; else currentUserVideoLabel">{{ video.userId }}</span>
+      <ng-template #currentUserVideoLabel>
+        <span>You</span>
+      </ng-template>
+      <video
+        [srcObject]="video.srcObject"
+        (loadedmetadata)="onLoadedMetadata($event)"
+        id="remote-video"
+       
+      >
+      </video>
+      <button (click)="muteAudio()">Mute</button><br>
+      <button (click)="offVideo()">off video</button><br>
+      <button class="button" (click)="shareScreen()">Screen share</button>
+      <button class="button" (click)="stopScreenShare()">Stop share</button>
+    </div>
+    <div>
+    </div>
+  </div>
